@@ -1,7 +1,7 @@
 import { toast } from "react-toastify";
 
 export const handleError = (msg) =>{
-    toast.success(
+    toast.error(
         msg,{
             position:'top-right'
         }
@@ -9,7 +9,7 @@ export const handleError = (msg) =>{
 }
 
 export const handleSuccess = (msg) =>{
-    toast.error(
+    toast.success(
         msg,{
             position:'top-right'
         }

@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { ToastContainer } from 'react-toastify';
-import { handleError } from '../utlis';
+import { handleError, handleSuccess } from '../utlis';
 
 export const Signup = () => {
     const [signupInfo, setSignupInfo] = useState({
@@ -9,6 +9,7 @@ export const Signup = () => {
         email: "",
         password: ""
     });
+    const navigate = useNavigate();
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -18,25 +19,50 @@ export const Signup = () => {
         setSignupInfo(copySignupInfo);
     }
     console.log("loginInfo ====>", signupInfo)
-    const handleSignup = (e) => {
+    const handleSignup = async (e) => {
         e.preventDefault();
         const { name, email, password } = signupInfo;
         if (!name || !email || !password) {
             return handleError("Name, email and Password are required");
         }
-        // try{
-        //     const url = "http//localhost:8080/auth/signup";
-        //     const response = await fetch(url{
-        //         method:'POST',
-        //         body:'application/json'
-        //     })
-        // }
+        try {
+            const url = "http://localhost:8080/auth/signup";
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'content-type': 'application/json'
+                },
+                body: JSON.stringify(signupInfo)
+            })
+            const result = await response.json();
+            const { success, message, error } = result;
+            if (success) {
+                setSignupInfo({
+                    name: "",
+                    email: "",
+                    password: ""
+                });
+                handleSuccess(message)
+                setTimeout(() => {
+                    navigate("/login")
+                }, 1000)
+            } else if (error) {
+                const details = error?.details[0].message;
+                handleError(details);
+            }
+            else if (!success) {
+                handleError(message)
+            }
+        }
+        catch (err) {
+            handleError(err)
+        }
     }
 
     return (
         <div>
             <h1>Signup</h1>
-            <form action={handleSignup}>
+            <form onSubmit={handleSignup}>
                 <div>
                     <label htmlFor="name"></label>
                     <input type="text"
