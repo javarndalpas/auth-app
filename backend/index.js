@@ -5,7 +5,9 @@ require('./Models/db');
 const bodyParser = require('body-parser')
 const cors = require('cors')
 const AuthRouter = require('./Routes/AuthRouter')
-const ProductRouter = require('./Routes/ProductRouter')
+const ProductRouter = require('./Routes/ProductRouter');
+const AddProperties = require('./Routes/AddProperties')
+const GetProperties = require('./Routes/AddProperties')
 
 const PORT = process.env.PORT || 8080
 
@@ -17,6 +19,7 @@ app.use(bodyParser.json())
 app.use(cors());
 app.use('/auth', AuthRouter)
 app.use('/products', ProductRouter)
+app.use('/properties', AddProperties)
 
 app.listen(PORT, () => {
     console.log(`server is running on the ${PORT}`)
