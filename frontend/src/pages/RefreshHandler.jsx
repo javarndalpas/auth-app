@@ -9,7 +9,8 @@ export const RefreshHandler = ({ setIsAuthanticated }) => {
         if (localStorage.getItem('token')) {
             setIsAuthanticated(true)
             if (location.pathname === '/' || location.pathname === '/login' || location.pathname === '/signup') {
-                navigate('/home', { replace: false })
+                console.log("yyyyy");
+                navigate('/home', { replace: true })
             }
         }
     }, [location,navigate, setIsAuthanticated])

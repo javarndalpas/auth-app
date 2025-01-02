@@ -6,6 +6,7 @@ import { Login } from './pages/Login'
 import { Signup } from './pages/Signup'
 import { useState } from 'react'
 import { RefreshHandler } from './pages/RefreshHandler'
+import { DetailPage } from './pages/DetailPage'
 
 function App() {
   const [isAuthanticated,setIsAuthanticated] = useState(false);
@@ -19,6 +20,7 @@ function App() {
     <RefreshHandler setIsAuthanticated={setIsAuthanticated} />
       <Routes>
         <Route path="/" element={ <Navigate to="/login"/> } />
+        <Route path="/details/:id" element={ <PrivateRoute element={<DetailPage/>}/> } />
         <Route path="/home" element={ <PrivateRoute element={<Home/>}/> } />
         <Route path="/login" element={ <Login/> } />
         <Route path="/signup" element={ <Signup/> } />

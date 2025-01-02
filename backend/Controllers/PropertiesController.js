@@ -34,7 +34,7 @@ const addProperty = async (req, res) => {
 
 const getProperties = async (req, res) => {
     try {
-        const properties = await PropertyModel.find(); // Fetch all properties
+        const properties = await PropertyModel.find(); 
         res.status(200).json({
             message: "Properties fetched successfully",
             success: true,
