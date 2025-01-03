@@ -22,7 +22,7 @@ export const Login = () => {
       return handleError("Email and Password are required");
     }
     try {
-      const url = `${process.env.REACT_APP_API_URL}/auth/login`;
+      const url = `https://auth-app-git-main-alpas-shrivastavas-projects.vercel.app/auth/login`;
       const response = await fetch(url, {
         method: "POST",
         headers: {

@@ -16,7 +16,12 @@ app.get('/ping', (req, res) => {
 })
 
 app.use(bodyParser.json())
-app.use(cors());
+app.use(cors({
+    origin: '*', 
+    methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'], // Allow all methods
+    allowedHeaders: ['Content-Type', 'Authorization'] // Allow headers
+}));
+
 app.use('/auth', AuthRouter)
 app.use('/products', ProductRouter)
 app.use('/properties', AddProperties)
