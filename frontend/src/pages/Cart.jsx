@@ -8,11 +8,10 @@ export const Cart = () => {
   const { cartList } = useSelector((state) => state.cartState); 
   console.log(cartList);
   const dispatch = useDispatch();
-  
+
   const handleRemoveFromCart =(id)=>{
     dispatch(remove(id))
   }
-
   return (
     <>
       <Navbar />
@@ -21,15 +20,13 @@ export const Cart = () => {
         {cartList && cartList.length > 0 ? (
           <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
             {cartList.map((el, index) => (
-              <div key={index} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800"  >
+              <div key={index} className="max-w-sm bg-white border border-gray-200 rounded-lg shadow dark:bg-gray-800">
                 <a href="#">
                   <img className="rounded-t-lg" src={el.image} alt={el.name} />
                 </a>
                 <div className="p-5">
                   <a href="#">
-                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white">
-                      {el.name}
-                    </h5>
+                    <h5 className="mb-2 text-2xl font-bold tracking-tight text-gray-900 dark:text-white"> {el.name} </h5>
                   </a>
                   <p className="mb-3 font-normal text-gray-700 dark:text-gray-400">
                     Owner: {el.owner}
