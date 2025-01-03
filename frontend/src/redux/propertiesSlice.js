@@ -1,6 +1,5 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 
-// Async thunk for fetching properties
 export const fetchProperties = createAsyncThunk(
   'properties/fetchProperties',
   async (_, { rejectWithValue }) => {
@@ -8,7 +7,6 @@ export const fetchProperties = createAsyncThunk(
       const url = "http://localhost:8080/properties";
       const response = await fetch(url);
       const result = await response.json();
-    //   console.log(result.properties)
       return result.properties;
     } catch (error) {
       return rejectWithValue(error.response.data.message || 'Something went wrong');
@@ -23,7 +21,7 @@ const propertiesSlice = createSlice({
     loading: false,
     error: null,
   },
-  reducers: {}, // Add any synchronous reducers if needed
+  reducers: {}, 
   extraReducers: (builder) => {
     builder
       .addCase(fetchProperties.pending, (state) => {
@@ -42,3 +40,4 @@ const propertiesSlice = createSlice({
 });
 
 export default propertiesSlice.reducer;
+

@@ -11,7 +11,7 @@ export const handleError = (msg) =>{
 export const handleSuccess = (msg) =>{
     toast.success(
         msg,{
-            position:'top-right'
+            position:'bottom-right'
         }
     )
 }
