@@ -4,7 +4,7 @@ export const fetchProperties = createAsyncThunk(
   'properties/fetchProperties',
   async (_, { rejectWithValue }) => {
     try {
-      const url = "http://localhost:8080/properties";
+      const url = `${process.env.REACT_APP_API_URL}/properties`;
       const response = await fetch(url);
       const result = await response.json();
       return result.properties;
