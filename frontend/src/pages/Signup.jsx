@@ -5,7 +5,7 @@ import { handleError, handleSuccess } from "../utlis";
 
 export const Signup = () => {
   const [signupInfo, setSignupInfo] = useState({
-    name: "",
+    username: "",
     email: "",
     password: "",
   });
@@ -18,8 +18,8 @@ export const Signup = () => {
 
   const handleSignup = async (e) => {
     e.preventDefault();
-    const { name, email, password } = signupInfo;
-    if (!name || !email || !password) {
+    const { username, email, password } = signupInfo;
+    if (!username || !email || !password) {
       return handleError("Name, email, and password are required");
     }
     try {
@@ -36,7 +36,7 @@ export const Signup = () => {
       const { success, message, error } = result;
       if (success) {
         setSignupInfo({
-          name: "",
+          username: "",
           email: "",
           password: "",
         });
@@ -68,7 +68,7 @@ export const Signup = () => {
               name="name"
               id="name"
               onChange={handleChange}
-              value={signupInfo.name}
+              value={signupInfo.username}
               placeholder="Enter your name"
               className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-indigo-500 focus:ring-indigo-500 sm:text-sm"
             />

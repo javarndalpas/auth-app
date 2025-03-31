@@ -4,13 +4,11 @@ const addProperty = async (req, res) => {
     try {
         const { image, price, name, owner, city, type } = req.body;
 
-        // Validate required fields
         if (!image || !price || !name || !owner || !city || !type) {
             return res.status(400)
                 .json({ message: "All fields are required", success: false });
         }
 
-        // Create a new property
         const newProperty = new PropertyModel({ image, price, name, owner, city, type });
         await newProperty.save();
 
@@ -30,11 +28,9 @@ const addProperty = async (req, res) => {
     }
 };
 
-
-
 const getProperties = async (req, res) => {
     try {
-        const properties = await PropertyModel.find(); 
+        const properties = await PropertyModel.find();
         res.status(200).json({
             message: "Properties fetched successfully",
             success: true,
@@ -48,8 +44,6 @@ const getProperties = async (req, res) => {
         });
     }
 };
-
-
 
 module.exports = {
     addProperty,

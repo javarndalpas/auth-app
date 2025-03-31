@@ -88,7 +88,6 @@ export const Home = () => {
   //   let filteredItems = [];
   //     filteredItems = data.filter((item) => item.type.toLowerCase() === type);
   //     setitemsToDisplay(filteredItems);
-
   // }
 
   // const applyFilters = () => {
@@ -135,7 +134,7 @@ export const Home = () => {
   const resetFilters = () => {
     setSelectedType(null);
     setSelectedPriceRange(null);
-    setitemsToDisplay(data);  // Show all items
+    setitemsToDisplay(data);  
   };
   const handleNavigationTodetails = (id) => {
     console.log(id)

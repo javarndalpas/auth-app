@@ -31,7 +31,7 @@ const Signup = async (req, res) => {
 
 const Login = async (req, res) => {
     try {
-        const {  email, password } = req.body;
+        const { email, password } = req.body;
         const user = await UserModel.findOne({ email });
         const errmsg = "Login failed Email or Password is wrong";
         if (!user) {
@@ -44,9 +44,9 @@ const Login = async (req, res) => {
                 .json({ message: errmsg, success: false })
         }
         const jwtToken = jwt.sign(
-            {email:user.email, _id:user.id},
+            { email: user.email, _id: user.id },
             process.env.JWT_SECRET,
-            {expiresIn: '24h'}
+            { expiresIn: '24h' }
         )
 
         res.status(200)
@@ -55,7 +55,7 @@ const Login = async (req, res) => {
                 success: true,
                 jwtToken,
                 email,
-                name:user.name
+                name: user.name
             })
     } catch (err) {
         console.log("Error:", err)

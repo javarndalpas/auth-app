@@ -15,17 +15,16 @@ export const DetailPage = () => {
     useEffect(() => {
         dispatch(fetchProperties());
     }, [dispatch]);
-    const handleAddTocart =()=>{
+    const handleAddTocart = () => {
         dispatch(add(property))
         handleSuccess("Added to cart")
     }
-
 
     const property = data.find((el) => el._id === id);
 
     return (
         <div>
-            <Navbar/>
+            <Navbar />
             {property ? (
                 <div className='border p-6 mt-16 shadow'>
                     <p className='text-2xl mb-4 text-black text-bold'>Property Name: {property.name}</p>
@@ -35,13 +34,13 @@ export const DetailPage = () => {
                     <p>Price: {property.price}</p>
                     <p>City: {property.city}</p>
                     <button className="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 me-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
-                    onClick={()=> handleAddTocart()}
+                        onClick={() => handleAddTocart()}
                     >Add to Cart</button>
                 </div>
             ) : (
                 <p>Loading property details...</p>
             )}
-            <ToastContainer/>
+            <ToastContainer />
         </div>
     );
 };

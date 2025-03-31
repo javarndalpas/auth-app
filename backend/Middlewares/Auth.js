@@ -1,4 +1,4 @@
-
+// this is middleware for 
 const jwt = require('jsonwebtoken');
 
 const ensureAuthenticatied = (req, res, next) => {

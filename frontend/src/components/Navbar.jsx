@@ -102,7 +102,7 @@ export const Navbar = () => {
                                 </NavLink>
                             </li>
 
-                            <form className="flex items-center max-w-sm mx-auto" onSubmit={(e)=>handleSubmit(e)}>
+                            <form className="flex items-center max-w-sm mx-auto" onSubmit={(e) => handleSubmit(e)}>
                                 <label for="simple-search" className="sr-only">Search</label>
                                 <div className="relative w-full">
                                     <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
@@ -119,7 +119,6 @@ export const Navbar = () => {
                                     <span className="sr-only">Search</span>
                                 </button>
                             </form>
-
                         </ul>
                     </div>
                 </div>
